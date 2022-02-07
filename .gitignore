@@ -10,3 +10,5 @@ doc
 
 resources/generated
 
+*.ipr
+*.iws

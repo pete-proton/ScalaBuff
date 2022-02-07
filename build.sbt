@@ -66,7 +66,7 @@ lazy val defaultSettings = Seq(
     }
   ),
 
-  crossScalaVersions ++= Seq("2.10.6", "2.11.11", "2.12.3"),
+  crossScalaVersions ++= Seq("2.11.11", "2.12.3"),
 
   scalacOptions ++= Seq(
     "-encoding", "utf8", "-unchecked", "-deprecation", "-feature",
@@ -77,7 +77,11 @@ lazy val defaultSettings = Seq(
     case _ =>
       Seq()
   }),
-  javacOptions ++= Seq("-encoding", "utf8", "-Xlint:unchecked", "-Xlint:deprecation"),
+  javacOptions ++= Seq(
+    "-source", "1.8",
+    "-target", "1.8",
+    "-encoding", "utf8",
+    "-Xlint:unchecked", "-Xlint:deprecation"),
 
   parallelExecution in GlobalScope := true,
 
@@ -110,3 +114,10 @@ lazy val scalabuffRuntime = project.in(file("scalabuff-runtime"))
 
 // load the Compiler project at sbt startup
 onLoad in Global := (Command.process("project scalabuffCompiler", _: State)) compose (onLoad in Global).value
+
+initialize := {
+  val _ = initialize.value
+  val javaVersion = sys.props("java.specification.version")
+  if (javaVersion != "1.8")
+    sys.error("Java 1.8 is required for this project. Found " + javaVersion + " instead")
+}
