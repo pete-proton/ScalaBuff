@@ -10,7 +10,7 @@ $ java -jar target/scala-2.11/scalabuff-compiler-assembly-1.4.0.jar --proto_path
 ```
 
 If you just want to use ScalaBuff-generated classes in your SBT-managed project, here's the dependency to add (located on the Sonatype OSS repository): `"net.sandrogrzicic" %% "scalabuff-runtime" % "[desired_version]"`
-The latest release is **1.5.0** with support for Scala 2.11 and 2.12.
+The latest release is **1.5.0** with support for Scala 2.10, 2.11 and 2.12.
 
 If you'd like to use SBT with ScalaBuff to auto-generate Scala protobuf classes from .proto sources, try the [sbt-scalabuff project](https://github.com/sbt/sbt-scalabuff).
 

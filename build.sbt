@@ -66,7 +66,7 @@ lazy val defaultSettings = Seq(
     }
   ),
 
-  crossScalaVersions ++= Seq("2.11.11", "2.12.3"),
+  crossScalaVersions ++= Seq("2.10.6", "2.11.11", "2.12.3"),
 
   scalacOptions ++= Seq(
     "-encoding", "utf8", "-unchecked", "-deprecation", "-feature",
